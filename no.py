@@ -20,15 +20,17 @@ class TestApp(npyscreen.NPSApp):
         ms2= F.add(npyscreen.TitleMultiSelect, max_height =-2, value = [1,], name="Pick Several",
                 values = ["Option1","Option2","Option3"], scroll_exit=True)
 
+        # read PC list from file
+        pc_dict = {}
+        with open('info', 'r') as file:
+            lines = file.readlines()
 
-        dic={"number":"parameter"};
-        print(str(dic));
-        file=open("info.txt","r");
-        f={file.read()};print(f);
+        for line in lines:
+            if line:
+                pc_details = line.split()
+                pc_dict[pc_details[0]] = {'ip': pc_details[1], 'mac': pc_details[2]}
 
-        # with open('text.txt', 'r') as file:
-        #     read_file = file.read()
-        #     print(read_file)
+        print(pc_dict)
 
         # This lets the user interact with the Form.
         F.edit()
