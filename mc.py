@@ -62,7 +62,7 @@ for pc, detail in pc_dict.items():
 
 # A SubmenuItem lets you add a menu (the selection_menu above, for example)
 # as a submenu of another menu
-submenu_item = cm.items.SubmenuItem("Список пек", selection_menu, menu)
+submenu_item = cm.items.SubmenuItem("Выбор ПК для включения", selection_menu, menu)
 
 # Once we're done creating them, we just add the items to the menu
 menu.append_item(menu_item)
