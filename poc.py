@@ -1,29 +1,41 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
+
 import paramiko
 
-
-def ssh_ls_example():
+def connect(ip, username, password):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect(hostname='192.168.210.11', port=22, username='user', password='user2020')
-    stdin_raw, stdout_raw, stderr_raw = client.exec_command('ls')
+    client.connect(hostname=ip, port=22, username=username, password=password)
+    return client
+
+def exec(client, command):
+    stdin_raw, stdout_raw, stderr_raw = client.exec_command(command)
     exit_code = stdout_raw.channel.recv_exit_status()
-
-# выключение пк sudo shutdown now + парва админа, включение ls
-
     stdout = []
     for line in stdout_raw:
         stdout.append(line.strip())
-
     stderr = []
     for line in stderr_raw:
         stderr.append(line.strip())
-
     print(stdout)
+    del stdin_raw, stdout_raw, stderr_raw
 
+# выключение пк sudo shutdown now + парва админа, включение ls
+
+    # stdout = []
+    # for line in stdout_raw:
+    #     stdout.append(line.strip())
+    #
+    # stderr = []
+    # for line in stderr_raw:
+    #     stderr.append(line.strip())
+    #
+    # print(stdout)
+
+def client_close(client):
     client.close()
-    del client, stdin_raw, stdout_raw, stderr_raw
+    del client
 
 example_mac = 'b4:2e:99:85:1e:45'
 
@@ -45,6 +57,11 @@ def ping(ip):
         print("Not Success")
 
 
-wake_on_lan(example_mac)
+client=connect(ip="192.168.210.12", username="user", password="user2020")
+exec(client, "ls")
+client_close(client)
+
+# редактор кода через nano
+
 # ctr+/ комментарий
-ping (hostname)
+# ping (hostname)
