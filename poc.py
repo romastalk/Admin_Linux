@@ -18,9 +18,33 @@ def exec(client, command):
     stderr = []
     for line in stderr_raw:
         stderr.append(line.strip())
-    print(stdout)
+    print('\n'.join(stdout))
     del stdin_raw, stdout_raw, stderr_raw
 
+# def read():
+#     pc_dict = {}
+#     with open('info', 'r') as file:
+#         lines = file.readlines()
+#
+#     for line in lines:
+#         if line:
+#             pc_details = line.split()
+#             pc_dict[pc_details[0]] = {'ip': pc_details[1], 'mac': pc_details[2]}
+#     print(pc_dict)
+#     return pc_dict
+
+# pc_dict = read()
+# pc_list = []
+
+def read_script(ip, username, password):
+    with open('script', 'r') as file:
+        lines = file.readlines()
+
+    client=connect(ip=ip, username=username, password=password)
+
+    for line in lines:
+        exec(client, line)
+    client_close(client)
 # выключение пк sudo shutdown now + парва админа, включение ls
 
     # stdout = []
@@ -57,9 +81,10 @@ def ping(ip):
         print("Not Success")
 
 
-client=connect(ip="192.168.210.12", username="user", password="user2020")
-exec(client, "ls")
-client_close(client)
+read_script(ip="192.168.210.12", username="user", password="user2020")
+# read()
+# exec(client, "ls")
+# client_close(client)
 
 # редактор кода через nano
 
