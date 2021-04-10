@@ -1,2 +1,2 @@
 ls
-cat /proc/cpuinfo
+head /proc/cpuinfo
