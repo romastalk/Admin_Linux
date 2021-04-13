@@ -22,7 +22,7 @@ def exec(client, command):
     print('\n'.join(stdout))
     del stdin_raw, stdout_raw, stderr_raw
 
-def read_script(ip, username, password):
+def execute_script(ip, username, password):
     with open('script', 'r') as file:
         lines = file.readlines()
 
@@ -31,6 +31,7 @@ def read_script(ip, username, password):
     for line in lines:
         exec(client, line)
     client_close(client)
+    input("Press 'Enter' to continue...")
 
 def client_close(client):
     client.close()
@@ -55,8 +56,9 @@ def ping(ip):
     else:
         print("Not Success")
 
+# if __name__ == "__main__":
+#     execute_script(ip="192.168.210.12", username="user", password="user2020")
 
-read_script(ip="192.168.210.12", username="user", password="user2020")
 
 # client = connect(ip="192.168.210.12", username="user", password="user2020")
 # exec(client, "ls")
