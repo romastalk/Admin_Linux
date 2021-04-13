@@ -36,35 +36,3 @@ def execute_script(ip, username, password):
 def client_close(client):
     client.close()
     del client
-
-example_mac = 'b4:2e:99:85:1e:45'
-
-def wake_on_lan(mac):
-    import os
-    stream = os.popen('wakeonlan ' + mac)
-    output = stream.read()
-    print(output)
-
-hostname = "192.168.210.11"
-
-def ping(ip):
-    import os
-    hostname = "192.168.210.11"
-    response = os.system("ping -c 4 " + hostname)
-    if response == 0:
-        print("Success")
-    else:
-        print("Not Success")
-
-# if __name__ == "__main__":
-#     execute_script(ip="192.168.210.12", username="user", password="user2020")
-
-
-# client = connect(ip="192.168.210.12", username="user", password="user2020")
-# exec(client, "ls")
-# client_close(client)
-
-# редактор кода через nano
-
-# ctr+/ комментарий
-# ping (hostname)
