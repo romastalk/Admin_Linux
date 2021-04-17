@@ -26,6 +26,7 @@ def execute_script(ip, username, password):
     with open('script', 'r') as file:
         lines = file.readlines()
 
+
     client = connect(ip=ip, username=username, password=password)
 
     for line in lines:

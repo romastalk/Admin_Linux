@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #-*- coding: utf-8 -*-
 import cursesmenu as cm
-
+import os
 import paramiko
 
 from poc import execute_script
@@ -32,6 +32,8 @@ for pc, detail in pc_dict.items():
     selection_menu_ping.append_item(cm.items.CommandItem(f"PC #{pc} IP: {detail['ip']} MAC: {detail['mac']}", f"ping -c 4 {detail['ip']}"))
     selection_menu_exec_run.append_item(cm.items.FunctionItem(f"PC #{pc} IP: {detail['ip']} MAC: {detail['mac']}", execute_script, args=[detail['ip'], "user", "user2020"]))
 
+# def clear():
+#     os.system("clear")
 wake_submenu = cm.items.SubmenuItem("Включить ПК из списка", selection_menu_wake, menu)
 
 ping_submenu = cm.items.SubmenuItem("Статус ПК", selection_menu_ping, menu)
@@ -48,3 +50,4 @@ menu.append_item(cm.items.MenuItem(text="Выход", should_exit=True))
 
 menu.show()
 cm.clear_terminal()
+os.system("clear")
