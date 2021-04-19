@@ -2,6 +2,7 @@
 #-*- coding: utf-8 -*-
 import cursesmenu as cm
 import paramiko
+import os
 
 from poc import execute_script
 
