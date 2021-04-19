@@ -25,12 +25,7 @@ def execute_script(ip, username):
     with open('script', 'r') as file:
         lines = file.readlines()
 
-<<<<<<< HEAD
-
-    client = connect(ip=ip, username=username, password=password)
-=======
     client = connect(ip=ip, username=username)
->>>>>>> POC
 
     system('clear')
     for line in lines:
