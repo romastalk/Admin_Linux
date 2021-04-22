@@ -10,7 +10,6 @@ def connect(ip, username):
     client.connect(hostname=ip, port=22, username=username)
     return client
 
-
 def exec(client, command):
     print(f'>>>>> Выполняем [{command.strip()}] <<<<<')
     stdin, stdout, stderr = client.exec_command(command, get_pty=True)
@@ -19,7 +18,6 @@ def exec(client, command):
         print(line, end="")
     del stdin, stdout, stderr
     return exit_code
-
 
 def execute_script(ip, username):
     with open('script', 'r') as file:
@@ -33,7 +31,6 @@ def execute_script(ip, username):
         print()
     client_close(client)
     input("Press 'Enter' to continue...")
-
 
 def client_close(client):
     client.close()
