@@ -5,10 +5,10 @@ import os
 import cursesmenu as cm
 import paramiko
 
-from poc import execute_script
+from ssh import execute_script
 
 
-def read():
+def PC_listing():
     pc_dict = {}
     with open("info", "r") as file:
         lines = file.readlines()
@@ -20,7 +20,7 @@ def read():
     return pc_dict
 
 
-pc_dict = read()
+pc_dict = PC_listing()
 pc_list = []
 
 menu = cm.CursesMenu("Linux Admin Automation", "Меню", show_exit_option=False)
