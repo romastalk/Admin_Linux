@@ -53,9 +53,7 @@ for pc, detail in pc_dict.items():
 wake_submenu = cm.items.SubmenuItem("Включить ПК из списка", selection_menu_wake, menu)
 ping_submenu = cm.items.SubmenuItem("Статус ПК", selection_menu_ping, menu)
 command_item = cm.items.CommandItem("Отредактировать скрипт", "nano script")
-exec_run_submenu = cm.items.SubmenuItem(
-    "Выполнить скрипт", selection_menu_exec_run, menu
-)
+exec_run_submenu = cm.items.SubmenuItem("Выполнить скрипт", selection_menu_exec_run, menu)
 
 menu.append_item(wake_submenu)
 menu.append_item(ping_submenu)
